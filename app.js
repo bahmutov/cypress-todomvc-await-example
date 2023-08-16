@@ -5,6 +5,14 @@ const uri = window.location.search.substring(1)
 const params = new URLSearchParams(uri)
 const appStartDelay = parseFloat(params.get('appStartDelay') || '0')
 
+// tell Axios to set headers to disable browser caching
+// of todos, so we always get the full list in the response
+axios.defaults.headers = {
+  'Cache-Control': 'no-cache',
+  Pragma: 'no-cache',
+  Expires: '0',
+}
+
 function appStart() {
   Vue.use(Vuex)
 
@@ -23,12 +31,12 @@ function appStart() {
       loading: false,
       todos: [],
       newTodo: '',
-      delay: 0
+      delay: 0,
     },
     getters: {
       newTodo: (state) => state.newTodo,
       todos: (state) => state.todos,
-      loading: (state) => state.loading
+      loading: (state) => state.loading,
     },
     mutations: {
       SET_DELAY(state, delay) {
@@ -65,7 +73,7 @@ function appStart() {
       },
       CLEAR_NEW_TODO(state) {
         state.newTodo = ''
-      }
+      },
     },
     actions: {
       setDelay({ commit }, delay) {
@@ -118,7 +126,7 @@ function appStart() {
         const todo = {
           title: state.newTodo,
           completed: false,
-          id: randomId()
+          id: randomId(),
         }
         // artificial delay in the application
         // for test "flaky test - can pass or not depending on the app's speed"
@@ -135,7 +143,7 @@ function appStart() {
       addEntireTodo({ commit }, todoFields) {
         const todo = {
           ...todoFields,
-          id: randomId()
+          id: randomId(),
         }
         axios.post('/todos', todo).then(() => {
           commit('ADD_TODO', todo)
@@ -168,14 +176,14 @@ function appStart() {
             const todo = {
               title,
               completed: false,
-              id: randomId()
+              id: randomId(),
             }
             commit('ADD_TODO', todo)
             resolve()
           }, milliseconds)
         })
-      }
-    }
+      },
+    },
   })
 
   // a few helper utilities
@@ -192,7 +200,7 @@ function appStart() {
       return todos.filter(function (todo) {
         return todo.completed
       })
-    }
+    },
   }
 
   // app Vue instance
@@ -200,7 +208,7 @@ function appStart() {
     store,
     data: {
       file: null,
-      visibility: 'all'
+      visibility: 'all',
     },
     el: '.todoapp',
 
@@ -239,7 +247,7 @@ function appStart() {
       remaining() {
         return this.$store.getters.todos.filter((todo) => !todo.completed)
           .length
-      }
+      },
     },
 
     // methods that implement data logic.
@@ -274,8 +282,8 @@ function appStart() {
 
       removeCompleted() {
         this.$store.dispatch('removeCompleted')
-      }
-    }
+      },
+    },
   })
 
   // use the Router from the vendor/director.js library
@@ -294,7 +302,7 @@ function appStart() {
       notfound: function () {
         window.location.hash = ''
         app.visibility = 'all'
-      }
+      },
     })
 
     router.init()
