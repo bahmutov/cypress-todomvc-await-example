@@ -1,0 +1,21 @@
+{
+  "name": "cypress-todomvc-await-example",
+  "version": "1.0.0",
+  "description": "Writing Cypress tests without callback pyramids",
+  "private": true,
+  "scripts": {
+    "start": "json-server --static . --watch data.json --middlewares ./node_modules/json-server-reset",
+    "reset": "node reset-db.js",
+    "reset:db": "npm run reset",
+    "reset:database": "npm run reset"
+  },
+  "dependencies": {
+    "json-server": "0.17.3",
+    "json-server-reset": "1.6.0"
+  },
+  "devDependencies": {
+    "cypress": "^12.17.4",
+    "prettier": "^2.8.8",
+    "start-server-and-test": "^2.0.0"
+  }
+}
