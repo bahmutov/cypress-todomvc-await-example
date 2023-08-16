@@ -1,4 +1,4 @@
-# cypress-todomvc-await-example
+# cypress-todomvc-await-example [![ci](https://github.com/bahmutov/cypress-todomvc-await-example/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/cypress-todomvc-await-example/actions/workflows/ci.yml) ![cypress version](https://img.shields.io/badge/cypress-12.17.4-brightgreen) ![cypress-await version](https://img.shields.io/badge/cypress--await-1.1.0-brightgreen)
 
 > Writing Cypress tests without callback pyramids
 
