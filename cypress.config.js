@@ -9,7 +9,13 @@ module.exports = defineConfig({
     supportFile: false,
     fixturesFolder: false,
     setupNodeEvents(on, config) {
-      on('file:preprocessor', cyAwaitPreprocessor)
+      on(
+        'file:preprocessor',
+        cyAwaitPreprocessor({
+          specPattern: 'sync.cy.js',
+          debugOutput: true,
+        }),
+      )
     },
   },
 })

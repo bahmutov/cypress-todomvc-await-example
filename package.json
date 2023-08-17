@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "cypress": "^12.17.4",
-    "cypress-await": "^1.1.0",
+    "cypress-await": "^1.4.0",
     "prettier": "^2.8.8",
     "start-server-and-test": "^2.0.0"
   }
