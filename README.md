@@ -4,6 +4,8 @@
 
 Using [cypress-await](https://github.com/bahmutov/cypress-await) plugin
 
+📝 Read blog post [Use Async Await In Cypress Specs](https://glebbahmutov.com/blog/use-async-await-in-cypress-specs/)
+
 ## Before
 
 ```js
