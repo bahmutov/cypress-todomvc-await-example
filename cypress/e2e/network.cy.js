@@ -8,9 +8,7 @@ it('shows the number of items returned by the server', () => {
     .its('response.body.length')
     .then((n) => {
       if (n) {
-        cy.get('li.todo').then(($li) => {
-          expect($li.length, 'number of todos').to.equal(n)
-        })
+        cy.get('li.todo').should('have.length', n)
         cy.contains('[data-cy=remaining-count]', n)
       } else {
         cy.log('no todos found')
